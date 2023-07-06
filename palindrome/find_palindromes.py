@@ -1,9 +1,13 @@
 import sys
+import re
 
 
 def is_palindrome(phrase):
-    # TODO: regex to remove whitespace
-    phrase = phrase.strip()
+    # remove whitespace
+    pattern = re.compile(r'\W')
+    phrase = re.sub(pattern, '', phrase)
+    # all to lowercase
+    phrase = ''.join(char.lower() for char in phrase)
     return phrase == phrase[::-1]
 
 
