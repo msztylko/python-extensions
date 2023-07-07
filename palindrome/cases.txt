@@ -687,27 +687,6 @@ GdRqmgnNsdhQ tameo garageman sees name tag.
 GdRqmgnNsdhM tameo garageman sees name tag.
 GdRqugnNsdhM tameo garageman sees name tag.
 GMRqugnNsdhM tameo garageman sees name tag.
-Geronimo, no minor ego.
-Geronimo, nj minor ego.
-Geronieo, nj minor ego.
-Gerinieo, nj minor ego.
-Gerinieq, nj minor ego.
-Gerikieq, nj minor ego.
-Gerikieq,Inj minor ego.
-GeriHieq,Inj minor ego.
-GeriHieq,InV minor ego.
-GeriHiec,InV minor ego.
-GeriWiec,InV minor ego.
-GeriWiec,ISV minor ego.
-GeriWiec,ISj minor ego.
-GeriWieo,ISj minor ego.
-GeriWiao,ISj minor ego.
-Geribiao,ISj minor ego.
-Geribiab,ISj minor ego.
-Geribiab,ISH minor ego.
-Gehibiab,ISH minor ego.
-GehiCiab,ISH minor ego.
-GehiCSab,ISH minor ego.
 Gert, I saw Ron avoid a radio-van, or was it Reg?
 Gjrt, I saw Ron avoid a radio-van, or was it Reg?
 Gjrt, I saw Ron avoid aRradio-van, or was it Reg?
@@ -1191,7 +1170,6 @@ NP sfxS—uKOScYnA papaya war is on.
 NP sfxS—uKOSpYnA papaya war is on.
 NP hfxS—uKOSpYnA papaya war is on.
 No trace; not one carton.
-No trace; nop one carton.
 No trsce; nop one carton.
 No trsce; nof one carton.
 No tfsce; nof one carton.
@@ -1358,7 +1336,6 @@ NiK GEr,xoKzfer prison.
 NiK GEr,xoWzfer prison.
 NiK GEr,xoWZfer prison.
 NiM GEr,xoWZfer prison.
-Now I see bees, I won.
 Now I see bees, I won.
 Now I seefbees, I won.
 Now I segfbees, I won.
@@ -1757,27 +1734,6 @@ TGlEZpfgto hoot
 TGliZpfgto hoot
 TGlibpfgto hoot
 TGlibpfgto hoot
-0We panic in a pew.
-0De panic in a pew.
-0De paDic in a pew.
-0Dr paDic in a pew.
-0Dr paDicgin a pew.
-0DrupaDicgin a pew.
-0DrupaDiKgin a pew.
-0DrepaDiKgin a pew.
-0DuepaDiKgin a pew.
-0DueTaDiKgin a pew.
-0DuvTaDiKgin a pew.
-0DuvTaeiKgin a pew.
-0DuvTaMiKgin a pew.
-0DuvQaMiKgin a pew.
-0DuvQaMiMgin a pew.
-0DuvbaMiMgin a pew.
-0DuqbaMiMgin a pew.
-0DuqbaMdMgin a pew.
-0DuqbaCdMgin a pew.
-0DuqbaCdMJin a pew.
-0DuqbaCdMmin a pew.
 Won’t lovers revolt now?
 Won’t lDvers revolt now?
 Won’t YDvers revolt now?
