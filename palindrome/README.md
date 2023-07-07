@@ -16,3 +16,13 @@ real	0m0.131s
 user	0m0.113s
 sys	0m0.014s
 ```
+
+## C version
+
+```bash
+./test.sh ./palindrome                                                                
+
+real	0m0.006s
+user	0m0.004s
+sys	0m0.001s
+```
