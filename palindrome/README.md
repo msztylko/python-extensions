@@ -74,3 +74,4 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+To install C extension you can run `pip install -e .` in the directory with C code and `setup.py`
