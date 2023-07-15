@@ -2,6 +2,8 @@
 
 When working on C extensions to Python it's not uncommon to encounter strange bugs. 
 
+## Palindrome
+
 My initial version of palindrome extension:
 
 ```C
