@@ -19,9 +19,9 @@ static PyObject *cpalindrome_is_palindrome(PyObject *self, PyObject *args) {
         while (!isalnum(phrase[h]) && l < h)
             h--;
         if (tolower(phrase[l++]) != tolower(phrase[h--]))
-            return Py_False;
+            Py_RETURN_FALSE;
     }
-    return Py_True;
+    Py_RETURN_TRUE;
 }
 
 static PyMethodDef CVarintMethods[] = {
