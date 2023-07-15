@@ -216,3 +216,5 @@ Fixed version:
     }
     return Py_True;
 ```
+
+I spent some time playing with this bug in `lldb` that it was more tricky. I realized that the error might be related to `Py_False` and `Py_True` so I went back to [documentation](https://docs.python.org/3/c-api/bool.html) and replace it with `Py_RETURN_FALSE` and `Py_RETURN_TRUE` respectively.
