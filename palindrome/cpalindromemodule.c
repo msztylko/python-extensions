@@ -14,9 +14,9 @@ static PyObject *cpalindrome_is_palindrome(PyObject *self, PyObject *args) {
         h--;
 
     while (l < h) {
-        while (!isalnum(phrase[l] && l < h))
+        while (!isalnum(phrase[l]) && l < h)
             l++;
-        while (!isalnum(phrase[h] && l < h))
+        while (!isalnum(phrase[h]) && l < h)
             h--;
         if (tolower(phrase[l++] != tolower(phrase[h--])))
             return Py_False;
