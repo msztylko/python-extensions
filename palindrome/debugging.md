@@ -102,3 +102,88 @@ Ok, that doesn't look right.
 At this stage I was able to spot the typo in the code (can you?), but let's keep playing with the debugger. I see 2 useful adjustments:
 1. `cpalindrome.cpython-310-darwin.so was compiled with optimization - stepping may behave oddly; variables may not be available.` - so let's compile it without optimizations and with debug symbols, it's my code so no problem with that.
 2. Debugger stopped because of `EXC_BAD_ACCESS` in function `cpalindrome_is_palindrome`. We can set a breakpoint there before it segfaults.
+
+### Build Python C extension with debug symbols
+
+I'm not sure if `pip` can be used for that, so I `pip uninstall cpalindrome` first.
+Then I run:
+
+```bash
+CFLAGS='-Wall -O0 -g' python setup.py install
+```
+
+Back to `lldb`
+
+```bash
+lldb python                                                                    
+(lldb) target create "python"
+Current executable set to 'python' (arm64).
+(lldb) settings set target.input-path cases.txt
+(lldb) r C_find_palindromes.py 
+Process 10234 launched: '/Users/marcin/code/python-extensions/palindrome/.venv/bin/python' (arm64)
+Process 10234 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BAD_ACCESS (code=1, address=0x101b00000)
+    frame #0: 0x00000001005b7dc4 cpalindrome.cpython-310-darwin.so`cpalindrome_is_palindrome(self=0x0000000101987d80, args=0x0000000101926560) at cpalindromemodule.c:17:17
+   14  	        h--;
+   15  	
+   16  	    while (l < h) {
+-> 17  	        while (!isalnum(phrase[l] && l < h))
+   18  	            l++;
+   19  	        while (!isalnum(phrase[h] && l < h))
+   20  	            h--;
+Target 0: (python) stopped.
+```
+
+We see no more information about optimizations and unavailable symbols. Let's set a breakpoint and rerun the process:
+
+```bash
+b cpalindrome_is_palindrome
+Breakpoint 1: where = cpalindrome.cpython-310-darwin.so`cpalindrome_is_palindrome + 20 at cpalindromemodule.c:6:9, address = 0x00000001005b7d38
+(lldb) r
+There is a running process, kill it and restart?: [Y/n] y
+Process 10234 exited with status = 9 (0x00000009) 
+Process 10239 launched: '/Users/marcin/code/python-extensions/palindrome/.venv/bin/python' (arm64)
+Process 10239 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+    frame #0: 0x00000001005b7d38 cpalindrome.cpython-310-darwin.so`cpalindrome_is_palindrome(self=0x0000000101087d80, args=0x0000000101026560) at cpalindromemodule.c:6:9
+   3   	
+   4   	static PyObject *cpalindrome_is_palindrome(PyObject *self, PyObject *args) {
+   5   	    const char *phrase;
+-> 6   	    int l = 0;
+   7   	
+   8   	    if (!PyArg_ParseTuple(args, "s", &phrase))
+   9   	        return NULL;
+Target 0: (python) stopped.
+```
+
+We've already seen that `l` has a incorrect value when the program segfaults. Let's watch this variable to better understand what's going on.
+
+```bash
+w s v l
+Watchpoint created: Watchpoint 1: addr = 0x16fdfec3c size = 4 state = enabled type = w
+    declare @ '/Users/marcin/code/python-extensions/palindrome/cpalindromemodule.c:6'
+    watchpoint spec = 'l'
+    new value: 0
+```
+then we can `continue` until something interesting happens. It doesn't take long to see that:
+```bash
+-> 17  	        while (!isalnum(phrase[l] && l < h))
+   18  	            l++;
+```
+is the problem - we are missing parenthesis in the call to `isalnum`.
+
+Fixed version:
+
+```C
+...
+
+    while (l < h) {
+        while (!isalnum(phrase[l]) && l < h)
+            l++;
+        while (!isalnum(phrase[h]) && l < h)
+            h--;
+        if (tolower(phrase[l++] != tolower(phrase[h--])))
+            return Py_False;
+    }
+    return Py_True;
+```
