@@ -111,3 +111,47 @@ Then I run:
 ```bash
 CFLAGS='-Wall -O0 -g' python setup.py install
 ```
+
+Back to `lldb`
+
+```bash
+lldb python                                                                    
+(lldb) target create "python"
+Current executable set to 'python' (arm64).
+(lldb) settings set target.input-path cases.txt
+(lldb) r C_find_palindromes.py 
+Process 10234 launched: '/Users/marcin/code/python-extensions/palindrome/.venv/bin/python' (arm64)
+Process 10234 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = EXC_BAD_ACCESS (code=1, address=0x101b00000)
+    frame #0: 0x00000001005b7dc4 cpalindrome.cpython-310-darwin.so`cpalindrome_is_palindrome(self=0x0000000101987d80, args=0x0000000101926560) at cpalindromemodule.c:17:17
+   14  	        h--;
+   15  	
+   16  	    while (l < h) {
+-> 17  	        while (!isalnum(phrase[l] && l < h))
+   18  	            l++;
+   19  	        while (!isalnum(phrase[h] && l < h))
+   20  	            h--;
+Target 0: (python) stopped.
+```
+
+We see no more information about optimizations and unavailable symbols. Let's set a breakpoint and rerun the process:
+
+```bash
+b cpalindrome_is_palindrome
+Breakpoint 1: where = cpalindrome.cpython-310-darwin.so`cpalindrome_is_palindrome + 20 at cpalindromemodule.c:6:9, address = 0x00000001005b7d38
+(lldb) r
+There is a running process, kill it and restart?: [Y/n] y
+Process 10234 exited with status = 9 (0x00000009) 
+Process 10239 launched: '/Users/marcin/code/python-extensions/palindrome/.venv/bin/python' (arm64)
+Process 10239 stopped
+* thread #1, queue = 'com.apple.main-thread', stop reason = breakpoint 1.1
+    frame #0: 0x00000001005b7d38 cpalindrome.cpython-310-darwin.so`cpalindrome_is_palindrome(self=0x0000000101087d80, args=0x0000000101026560) at cpalindromemodule.c:6:9
+   3   	
+   4   	static PyObject *cpalindrome_is_palindrome(PyObject *self, PyObject *args) {
+   5   	    const char *phrase;
+-> 6   	    int l = 0;
+   7   	
+   8   	    if (!PyArg_ParseTuple(args, "s", &phrase))
+   9   	        return NULL;
+Target 0: (python) stopped.
+```
