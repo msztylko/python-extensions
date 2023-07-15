@@ -155,3 +155,35 @@ Process 10239 stopped
    9   	        return NULL;
 Target 0: (python) stopped.
 ```
+
+We've already seen that `l` has a incorrect value when the program segfaults. Let's watch this variable to better understand what's going on.
+
+```bash
+w s v l
+Watchpoint created: Watchpoint 1: addr = 0x16fdfec3c size = 4 state = enabled type = w
+    declare @ '/Users/marcin/code/python-extensions/palindrome/cpalindromemodule.c:6'
+    watchpoint spec = 'l'
+    new value: 0
+```
+then we can `continue` until something interesting happens. It doesn't take long to see that:
+```bash
+-> 17  	        while (!isalnum(phrase[l] && l < h))
+   18  	            l++;
+```
+is the problem - we are missing parenthesis in the call to `isalnum`.
+
+Fixed version:
+
+```C
+...
+
+    while (l < h) {
+        while (!isalnum(phrase[l]) && l < h)
+            l++;
+        while (!isalnum(phrase[h]) && l < h)
+            h--;
+        if (tolower(phrase[l++] != tolower(phrase[h--])))
+            return Py_False;
+    }
+    return Py_True;
+```
