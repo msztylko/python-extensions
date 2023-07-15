@@ -102,3 +102,12 @@ Ok, that doesn't look right.
 At this stage I was able to spot the typo in the code (can you?), but let's keep playing with the debugger. I see 2 useful adjustments:
 1. `cpalindrome.cpython-310-darwin.so was compiled with optimization - stepping may behave oddly; variables may not be available.` - so let's compile it without optimizations and with debug symbols, it's my code so no problem with that.
 2. Debugger stopped because of `EXC_BAD_ACCESS` in function `cpalindrome_is_palindrome`. We can set a breakpoint there before it segfaults.
+
+### Build Python C extension with debug symbols
+
+I'm not sure if `pip` can be used for that, so I `pip uninstall cpalindrome` first.
+Then I run:
+
+```bash
+CFLAGS='-Wall -O0 -g' python setup.py install
+```
