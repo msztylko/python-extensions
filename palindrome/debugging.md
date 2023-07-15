@@ -187,3 +187,32 @@ Fixed version:
     }
     return Py_True;
 ```
+
+Let's rerun everything:
+
+```bash
+CFLAGS='-Wall -O0 -g' python setup.py install
+...
+python C_find_palindromes.py < cases.txt                                       
+python(13349,0x10164c580) malloc: *** error for object 0x101190408: pointer being freed was not allocated
+python(13349,0x10164c580) malloc: *** set a breakpoint in malloc_error_break to debug
+[1]    13349 abort      python C_find_palindromes.py < cases.txt
+```
+And we have a new issue... more opportunities to practice!
+
+From just reading the source code I realized there's one more issue with parenthesis.
+
+Fixed version:
+
+```C
+...
+    while (l < h) {
+        while (!isalnum(phrase[l]) && l < h)
+            l++;
+        while (!isalnum(phrase[h]) && l < h)
+            h--;
+        if (tolower(phrase[l++]) != tolower(phrase[h--]))
+            return Py_False;
+    }
+    return Py_True;
+```
