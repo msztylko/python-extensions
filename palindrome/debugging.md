@@ -199,3 +199,20 @@ python(13349,0x10164c580) malloc: *** set a breakpoint in malloc_error_break to 
 [1]    13349 abort      python C_find_palindromes.py < cases.txt
 ```
 And we have a new issue... more opportunities to practice!
+
+From just reading the source code I realized there's one more issue with parenthesis.
+
+Fixed version:
+
+```C
+...
+    while (l < h) {
+        while (!isalnum(phrase[l]) && l < h)
+            l++;
+        while (!isalnum(phrase[h]) && l < h)
+            h--;
+        if (tolower(phrase[l++]) != tolower(phrase[h--]))
+            return Py_False;
+    }
+    return Py_True;
+```
