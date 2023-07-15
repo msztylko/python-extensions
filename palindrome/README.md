@@ -29,9 +29,19 @@ user	0m0.004s
 sys	0m0.001s
 ```
 
+2 orders of magnitude faster for this example.
+
 ## Python with C extension
 
-> add benchmark once ready
+```bash
+./test.sh python C_find_palindromes.py                                         
+
+real	0m0.030s
+user	0m0.023s
+sys	0m0.005s
+```
+
+Not as fast as pure C version due to overhead of transforming to/from Python data structures. But still an order of magnitude improvement over pure Python version!
 
 ### Writing C extensions for Python
 
