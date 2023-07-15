@@ -52,3 +52,18 @@ had this result:
 python C_find_palindromes.py < cases.txt                                               
 [2]    4427 segmentation fault  python C_find_palindromes.py < cases.txt
 ```
+
+How to use debugger for stepping through C extension?
+
+First thing to do is to run native debugger, `lldb` or `gdb`, on python interpreter.
+```bash
+lldb python
+(lldb) target create "python"
+Current executable set to 'python' (arm64).
+```
+
+our program takes input redirected from `STDIN` and we can specify that with:
+
+```bash
+(lldb) settings set target.input-path cases.txt
+```
