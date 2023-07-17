@@ -8,22 +8,24 @@ F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>
 
 Main focus of this project are Python extensions so for now we stick to naive recursive implementation.
 
+As a first test I'm computing first 41 Fibonacci numbers. Any number after that takes too long in Python with naive implementation.
+
 ## Python version
 
 ```bash
-./test.sh python fib.py                                                                                                                  
+./test.sh python fib.py                                                                                                 
 
-real	0m8.309s
-user	0m8.190s
-sys	0m0.105s
+real	2m27.822s
+user	2m26.932s
+sys	0m0.705s
 ```
 
 ## C version
 
 ```bash
-./test.sh ./fib                                                                                                                            
+./test.sh ./fib                                                                                                          
 
-real	0m0.453s
-user	0m0.228s
-sys	0m0.003s
+real	0m3.809s
+user	0m3.785s
+sys	0m0.019s
 ```
