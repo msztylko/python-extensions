@@ -23,9 +23,19 @@ sys	0m0.705s
 ## C version
 
 ```bash
-./test.sh ./fib                                                                                                          
+./test.sh ./fib                                                                        
 
-real	0m3.809s
-user	0m3.785s
-sys	0m0.019s
+real	0m2.151s
+user	0m2.145s
+sys	0m0.005s
+```
+
+## Python with C extension
+
+```bash
+./test.sh python cfib.py                                                               
+
+real	0m2.262s
+user	0m2.178s
+sys	0m0.083s
 ```
