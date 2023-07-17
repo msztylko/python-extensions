@@ -8,3 +8,7 @@ Main [notes about debugging C extensions](https://github.com/msztylko/python-ext
 ## [Palindrome](https://github.com/msztylko/python-extensions/tree/master/palindrome)
 
 First example of making Python code faster.
+
+## [Fibonacci](https://github.com/msztylko/python-extensions/tree/master/fibonacci)
+
+Second example.
