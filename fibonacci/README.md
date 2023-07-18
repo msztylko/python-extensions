@@ -15,7 +15,7 @@ As a first test I'm computing first 41 Fibonacci numbers. Any number after that 
 [py_fib.py](https://github.com/msztylko/python-extensions/blob/master/fibonacci/py_fib.py)
 
 ```bash
-./test.sh python py_fib.py                                                     [6956407] 
+./test.sh python py_fib.py                                                     
 
 real	2m26.874s
 user	2m25.839s
@@ -29,17 +29,35 @@ sys	0m0.798s
 Compiled with: `gcc -O2 c_fib.c -o c_fib`
 
 ```bash
+./test.sh ./c_fib                                                              
 
+real	0m2.385s
+user	0m2.152s
+sys	0m0.013s
 ```
 
 ## Python with C extension
 
-
+[pyc_fib.py](https://github.com/msztylko/python-extensions/blob/master/fibonacci/pyc_fib.py) - Python driver  
+[cfibonaccimodule.c](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cfibonaccimodule.c) - C implementation
 
 ```bash
-./test.sh python cfib.py                                                               
+./test.sh python pyc_fib.py                                                     
 
-real	0m2.262s
-user	0m2.178s
-sys	0m0.083s
+real	0m2.391s
+user	0m2.167s
+sys	0m0.016s
+```
+
+## Cython
+
+[cython_fib.py](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cython_fib.py) - Python driver  
+[cython_fib.pyx](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cython_fib.pyx) - Cython implementation
+
+```bash
+./test.sh python cython_fib.py                                                
+
+real	0m42.316s
+user	0m41.936s
+sys	0m0.150s
 ```
