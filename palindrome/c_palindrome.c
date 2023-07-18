@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-bool ispalindrome(char s[]) {
+bool ispalindrome(char s[], int linelen) {
     int l = 0;
-    int h = strlen(s) -1; 
+    int h = linelen - 1;
     // one for \n and one due to index from 0
     if (s[h] == '\n')
         h--;
@@ -29,7 +29,7 @@ int main() {
   char *line = NULL;
   while ((read = getline(&line, &len, stdin)) != -1) {
     
-    if (ispalindrome(line))
+    if (ispalindrome(line, read))
       printf("%s", line);
   }
 
