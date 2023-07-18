@@ -54,6 +54,8 @@ sys	0m0.016s
 [cython_fib.py](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cython_fib.py) - Python driver  
 [cython_fib.pyx](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cython_fib.pyx) - Cython implementation
 
+Build with `python setup.py build_ext --inplace`
+
 ```bash
 ./test.sh python cython_fib.py                                                 
 
