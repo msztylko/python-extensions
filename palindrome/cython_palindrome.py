@@ -1,7 +1,7 @@
 import re
 import sys
 
-from cython_palindromes import is_palindrome
+from cython_palindrome import is_palindrome
 
 
 if __name__ == "__main__":

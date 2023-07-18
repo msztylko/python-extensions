@@ -17,10 +17,3 @@ def is_palindrome(phrase: str) -> bool:
         left += 1
         right -= 1
     return True
-    
-
-
-if __name__ == "__main__":
-    for line in sys.stdin:
-        if is_palindrome(line):
-            sys.stdout.write(line)
