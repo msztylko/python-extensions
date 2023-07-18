@@ -10,4 +10,4 @@ if [[ "$#" < 1 ]]; then
     exit 1
 fi
 
-diff <(cat cases_41.txt | eval "(time $@)") cases_41.txt
+diff <(cat cases_30.txt | eval "(time $@)") cases_30.txt

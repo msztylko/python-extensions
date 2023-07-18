@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "fib",
+        "name": "cython_fib",
         "sources": [
-            "fib.pyx"
+            "cython_fib.pyx"
         ]
     },
-    "module_name": "fib"
+    "module_name": "cython_fib"
 }
 END: Cython Metadata */
 
@@ -1085,8 +1085,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__fib
-#define __PYX_HAVE_API__fib
+#define __PYX_HAVE__cython_fib
+#define __PYX_HAVE_API__cython_fib
 /* Early includes */
 #ifdef _OPENMP
 #include <omp.h>
@@ -1350,7 +1350,7 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char *__pyx_f[] = {
-  "fib.pyx",
+  "cython_fib.pyx",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* #### Code section: numeric_typedefs ### */
@@ -1871,14 +1871,14 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* #### Code section: module_declarations ### */
 
-/* Module declarations from "fib" */
+/* Module declarations from "cython_fib" */
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
-#define __Pyx_MODULE_NAME "fib"
-extern int __pyx_module_is_main_fib;
-int __pyx_module_is_main_fib = 0;
+#define __Pyx_MODULE_NAME "cython_fib"
+extern int __pyx_module_is_main_cython_fib;
+int __pyx_module_is_main_cython_fib = 0;
 
-/* Implementation of "fib" */
+/* Implementation of "cython_fib" */
 /* #### Code section: global_var ### */
 /* #### Code section: string_decls ### */
 static const char __pyx_k_n[] = "n";
@@ -1887,12 +1887,13 @@ static const char __pyx_k_fib[] = "fib";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_fib_pyx[] = "fib.pyx";
+static const char __pyx_k_cython_fib[] = "cython_fib";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
+static const char __pyx_k_cython_fib_pyx[] = "cython_fib.pyx";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_n); /* proto */
+static PyObject *__pyx_pf_10cython_fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_n); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 typedef struct {
@@ -1925,8 +1926,9 @@ typedef struct {
   PyObject *__pyx_n_s__3;
   PyObject *__pyx_n_s_asyncio_coroutines;
   PyObject *__pyx_n_s_cline_in_traceback;
+  PyObject *__pyx_n_s_cython_fib;
+  PyObject *__pyx_kp_s_cython_fib_pyx;
   PyObject *__pyx_n_s_fib;
-  PyObject *__pyx_kp_s_fib_pyx;
   PyObject *__pyx_n_s_is_coroutine;
   PyObject *__pyx_n_s_main;
   PyObject *__pyx_n_s_n;
@@ -1981,8 +1983,9 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s__3);
   Py_CLEAR(clear_module_state->__pyx_n_s_asyncio_coroutines);
   Py_CLEAR(clear_module_state->__pyx_n_s_cline_in_traceback);
+  Py_CLEAR(clear_module_state->__pyx_n_s_cython_fib);
+  Py_CLEAR(clear_module_state->__pyx_kp_s_cython_fib_pyx);
   Py_CLEAR(clear_module_state->__pyx_n_s_fib);
-  Py_CLEAR(clear_module_state->__pyx_kp_s_fib_pyx);
   Py_CLEAR(clear_module_state->__pyx_n_s_is_coroutine);
   Py_CLEAR(clear_module_state->__pyx_n_s_main);
   Py_CLEAR(clear_module_state->__pyx_n_s_n);
@@ -2015,8 +2018,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s__3);
   Py_VISIT(traverse_module_state->__pyx_n_s_asyncio_coroutines);
   Py_VISIT(traverse_module_state->__pyx_n_s_cline_in_traceback);
+  Py_VISIT(traverse_module_state->__pyx_n_s_cython_fib);
+  Py_VISIT(traverse_module_state->__pyx_kp_s_cython_fib_pyx);
   Py_VISIT(traverse_module_state->__pyx_n_s_fib);
-  Py_VISIT(traverse_module_state->__pyx_kp_s_fib_pyx);
   Py_VISIT(traverse_module_state->__pyx_n_s_is_coroutine);
   Py_VISIT(traverse_module_state->__pyx_n_s_main);
   Py_VISIT(traverse_module_state->__pyx_n_s_n);
@@ -2059,8 +2063,9 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s__3 __pyx_mstate_global->__pyx_n_s__3
 #define __pyx_n_s_asyncio_coroutines __pyx_mstate_global->__pyx_n_s_asyncio_coroutines
 #define __pyx_n_s_cline_in_traceback __pyx_mstate_global->__pyx_n_s_cline_in_traceback
+#define __pyx_n_s_cython_fib __pyx_mstate_global->__pyx_n_s_cython_fib
+#define __pyx_kp_s_cython_fib_pyx __pyx_mstate_global->__pyx_kp_s_cython_fib_pyx
 #define __pyx_n_s_fib __pyx_mstate_global->__pyx_n_s_fib
-#define __pyx_kp_s_fib_pyx __pyx_mstate_global->__pyx_kp_s_fib_pyx
 #define __pyx_n_s_is_coroutine __pyx_mstate_global->__pyx_n_s_is_coroutine
 #define __pyx_n_s_main __pyx_mstate_global->__pyx_n_s_main
 #define __pyx_n_s_n __pyx_mstate_global->__pyx_n_s_n
@@ -2072,22 +2077,22 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_codeobj__2 __pyx_mstate_global->__pyx_codeobj__2
 /* #### Code section: module_code ### */
 
-/* "fib.pyx":1
+/* "cython_fib.pyx":1
  * def fib(n):             # <<<<<<<<<<<<<<
  *     if n < 2:
  *         return n
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_3fib_1fib(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_10cython_fib_1fib(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_3fib_1fib = {"fib", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_3fib_1fib, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_3fib_1fib(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_10cython_fib_1fib = {"fib", (PyCFunction)(void*)(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_10cython_fib_1fib, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_10cython_fib_1fib(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2138,18 +2143,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("fib", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 1, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("fib.fib", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_fib.fib", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_3fib_fib(__pyx_self, __pyx_v_n);
+  __pyx_r = __pyx_pf_10cython_fib_fib(__pyx_self, __pyx_v_n);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_n) {
+static PyObject *__pyx_pf_10cython_fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_n) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2164,7 +2169,7 @@ static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("fib", 0);
 
-  /* "fib.pyx":2
+  /* "cython_fib.pyx":2
  * def fib(n):
  *     if n < 2:             # <<<<<<<<<<<<<<
  *         return n
@@ -2175,7 +2180,7 @@ static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject 
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "fib.pyx":3
+    /* "cython_fib.pyx":3
  * def fib(n):
  *     if n < 2:
  *         return n             # <<<<<<<<<<<<<<
@@ -2187,7 +2192,7 @@ static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject 
     __pyx_r = __pyx_v_n;
     goto __pyx_L0;
 
-    /* "fib.pyx":2
+    /* "cython_fib.pyx":2
  * def fib(n):
  *     if n < 2:             # <<<<<<<<<<<<<<
  *         return n
@@ -2195,7 +2200,7 @@ static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject 
  */
   }
 
-  /* "fib.pyx":5
+  /* "cython_fib.pyx":5
  *         return n
  *     else:
  *         return fib(n-1) + fib(n-2)             # <<<<<<<<<<<<<<
@@ -2261,7 +2266,7 @@ static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject 
     goto __pyx_L0;
   }
 
-  /* "fib.pyx":1
+  /* "cython_fib.pyx":1
  * def fib(n):             # <<<<<<<<<<<<<<
  *     if n < 2:
  *         return n
@@ -2274,7 +2279,7 @@ static PyObject *__pyx_pf_3fib_fib(CYTHON_UNUSED PyObject *__pyx_self, PyObject 
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("fib.fib", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("cython_fib.fib", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2301,8 +2306,9 @@ static int __Pyx_CreateStringTabAndInitStrings(void) {
     {&__pyx_n_s__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 0, 1, 1},
     {&__pyx_n_s_asyncio_coroutines, __pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 0, 1, 1},
     {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+    {&__pyx_n_s_cython_fib, __pyx_k_cython_fib, sizeof(__pyx_k_cython_fib), 0, 0, 1, 1},
+    {&__pyx_kp_s_cython_fib_pyx, __pyx_k_cython_fib_pyx, sizeof(__pyx_k_cython_fib_pyx), 0, 0, 1, 0},
     {&__pyx_n_s_fib, __pyx_k_fib, sizeof(__pyx_k_fib), 0, 0, 1, 1},
-    {&__pyx_kp_s_fib_pyx, __pyx_k_fib_pyx, sizeof(__pyx_k_fib_pyx), 0, 0, 1, 0},
     {&__pyx_n_s_is_coroutine, __pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 0, 1, 1},
     {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
     {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
@@ -2322,7 +2328,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "fib.pyx":1
+  /* "cython_fib.pyx":1
  * def fib(n):             # <<<<<<<<<<<<<<
  *     if n < 2:
  *         return n
@@ -2330,7 +2336,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_n); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_fib_pyx, __pyx_n_s_fib, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_cython_fib_pyx, __pyx_n_s_fib, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2422,10 +2428,10 @@ static int __Pyx_modinit_function_import_code(void) {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_fib(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_cython_fib(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_fib},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_cython_fib},
   {0, NULL}
 };
 #endif
@@ -2438,7 +2444,7 @@ namespace {
   #endif
   {
       PyModuleDef_HEAD_INIT,
-      "fib",
+      "cython_fib",
       0, /* m_doc */
     #if CYTHON_PEP489_MULTI_PHASE_INIT
       0, /* m_size */
@@ -2486,11 +2492,11 @@ namespace {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initfib(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initfib(void)
+__Pyx_PyMODINIT_FUNC initcython_fib(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initcython_fib(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_fib(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_fib(void)
+__Pyx_PyMODINIT_FUNC PyInit_cython_fib(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_cython_fib(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -2571,7 +2577,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_fib(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_cython_fib(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -2588,7 +2594,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_fib(PyObject *__pyx_pyinit_module)
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'fib' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'cython_fib' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -2600,13 +2606,13 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_fib(PyObject *__pyx_pyinit_module)
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("fib", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("cython_fib", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   if (unlikely(!__pyx_m)) __PYX_ERR(0, 1, __pyx_L1_error)
   #elif CYTHON_USE_MODULE_STATE
   __pyx_t_1 = PyModule_Create(&__pyx_moduledef); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   {
     int add_module_result = PyState_AddModule(__pyx_t_1, &__pyx_moduledef);
-    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to fib pseudovariable */
+    __pyx_t_1 = 0; /* transfer ownership from __pyx_t_1 to cython_fib pseudovariable */
     if (unlikely((add_module_result < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     pystate_addmodule_run = 1;
   }
@@ -2632,7 +2638,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_fib(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_cython_fib(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -2670,14 +2676,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_fib) {
+  if (__pyx_module_is_main_cython_fib) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "fib")) {
-      if (unlikely((PyDict_SetItemString(modules, "fib", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "cython_fib")) {
+      if (unlikely((PyDict_SetItemString(modules, "cython_fib", __pyx_m) < 0))) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -2698,12 +2704,12 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "fib.pyx":1
+  /* "cython_fib.pyx":1
  * def fib(n):             # <<<<<<<<<<<<<<
  *     if n < 2:
  *         return n
  */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_3fib_1fib, 0, __pyx_n_s_fib, NULL, __pyx_n_s_fib, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_10cython_fib_1fib, 0, __pyx_n_s_fib, NULL, __pyx_n_s_cython_fib, __pyx_d, ((PyObject *)__pyx_codeobj__2)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_fib, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2719,7 +2725,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d && stringtab_initialized) {
-      __Pyx_AddTraceback("init fib", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init cython_fib", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     #if !CYTHON_USE_MODULE_STATE
     Py_CLEAR(__pyx_m);
@@ -2733,7 +2739,7 @@ if (!__Pyx_RefNanny) {
     }
     #endif
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init fib");
+    PyErr_SetString(PyExc_ImportError, "init cython_fib");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
