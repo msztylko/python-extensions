@@ -55,9 +55,9 @@ sys	0m0.016s
 [cython_fib.pyx](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cython_fib.pyx) - Cython implementation
 
 ```bash
-./test.sh python cython_fib.py                                                
+./test.sh python cython_fib.py                                                 
 
-real	0m42.316s
-user	0m41.936s
-sys	0m0.150s
+real	0m34.384s
+user	0m34.032s
+sys	0m0.235s
 ```
