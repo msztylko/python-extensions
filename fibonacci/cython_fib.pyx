@@ -1,4 +1,6 @@
-def fib(n):
+import cython
+
+def fib(n: cython.int) -> cython.int:
     if n < 2:
         return n
     else:
