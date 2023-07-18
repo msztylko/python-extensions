@@ -28,12 +28,12 @@ sys	0m0.006s
 Compiled with `gcc -O2 c_palindrome.c -o c_palindrome`
 
 ```bash
-./test.sh ./c_palindrome                                                      
+./test.sh ./c_palindrome                                                         
 ok
 
-real	0m0.636s
-user	0m0.004s
-sys	0m0.003s
+real	0m0.126s
+user	0m0.003s
+sys	0m0.002s
 ```
 
 2 orders of magnitude faster for this example.
