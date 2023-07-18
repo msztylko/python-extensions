@@ -65,8 +65,10 @@ Built with `python setup.py build_ext --inplace`
 ```bash
 ./test.sh python cython_palindrome.py                                          
 
-real	0m0.296s
-user	0m0.058s
-sys	0m0.007s
+real	0m0.053s
+user	0m0.044s
+sys	0m0.006s
 ```
+
+This is slower than the pure Python version 🤔
 
