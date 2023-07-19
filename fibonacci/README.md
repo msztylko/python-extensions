@@ -66,7 +66,7 @@ sys	0m0.235s
 
 ## Assembly
 
-[c_asm_fib.c](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_asm_fib.c) - C driver
+[c_asm_fib.c](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_asm_fib.c) - C driver  
 [asm_fib.asm](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm) - Assembly implementation
 
 Built with:
@@ -82,3 +82,5 @@ real	0m3.493s
 user	0m3.271s
 sys	0m0.012s
 ```
+
+It's slower than C version, but the point here was to just make it work and explore posibility of writing Python extensions in Assembly.
