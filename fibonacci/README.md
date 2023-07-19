@@ -63,3 +63,22 @@ real	0m34.384s
 user	0m34.032s
 sys	0m0.235s
 ```
+
+## Assembly
+
+[c_asm_fib.c](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_asm_fib.c) - C driver
+[asm_fib.asm](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm) - Assembly implementation
+
+Built with:
+```bash
+nasm -g -f macho64 --prefix _ asm_fib.asm -o asm_fib
+cc -g -Wall -arch x86_64  asm_fib c_asm_fib.c -o c_asm_fib
+```
+
+```bash
+./test.sh ./c_asm_fib                                                              
+
+real	0m3.493s
+user	0m3.271s
+sys	0m0.012s
+```
