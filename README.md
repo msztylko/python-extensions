@@ -1,10 +1,6 @@
 # python-extensions
 because life's too short for slow software
 
-## Debugging
-
-Main [notes about debugging C extensions](https://github.com/msztylko/python-extensions/blob/master/debugging.md)
-
 ## [Palindrome](https://github.com/msztylko/python-extensions/tree/master/palindrome)
 
 First example of making Python code faster.
@@ -13,7 +9,15 @@ First example of making Python code faster.
 
 Second example.
 
-### Writing C extensions for Python
+## Debugging
+
+[Notes](https://github.com/msztylko/python-extensions/blob/master/debugging.md) about debugging C extensions.
+
+## C2Assembly
+
+[Notes](https://github.com/msztylko/python-extensions/blob/master/C2Assembly.md) about translating C programs to Assembly.
+
+## Writing C extensions for Python
 
 Main reference for this topic: https://docs.python.org/3/extending/extending.html
 
