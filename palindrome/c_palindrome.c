@@ -7,9 +7,6 @@
 bool ispalindrome(char s[], int linelen) {
     int l = 0;
     int h = linelen - 1;
-    // one for \n and one due to index from 0
-    if (s[h] == '\n')
-        h--;
 
     while (l < h) {
         while (!isalnum(s[l]) && l<h) 
