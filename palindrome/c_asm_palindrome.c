@@ -3,9 +3,9 @@
 
 // extern ispalindrome(char *s, int linelen);
 
-int ispalindrome(char *s, int linelen) {
-    int l = 0;
-    int h = linelen - 1;
+char ispalindrome(char *s, char linelen) {
+    char l = 0;
+    char h = linelen - 1;
 
     char scase = 0x00;
     char sl, sh;
@@ -22,26 +22,32 @@ int ispalindrome(char *s, int linelen) {
         if ('A' <= sh && sh <= 'Z')
             scase |= (1 << 3);
 
-        while (!(scase & 0x03) && l<h) {
-            l++;
-            sl = s[l];
+        while (!(scase & 0x03)) {
+            sl = s[++l];
             if ('a' <= sl && sl <= 'z')
                 scase |= (1 << 0);
             if ('A' <= sl && sl <= 'Z')
                 scase |= (1 << 1);
         }
-        while (!(scase & 0x0C) && l<h) {
-            h--;
-            sh = s[h];
+        while (!(scase & 0x0C)) {
+            sh = s[--h];
             if ('a' <= sh && sh <= 'z')
                 scase |= (1 << 2);
             if ('A' <= sh && sh <= 'Z')
                 scase |= (1 << 3);
         }
-    
-        // both uppper
-        if ((scase == 0x0A) && (sl != sh))
-            return 0;
+
+        // both upper or lower
+        if ((scase == 0x0A) || (scase == 0x05)) {
+            if (sl == sh) {
+                h--;
+                l++;
+                scase = 0x00;
+                continue;
+            }
+            else
+                return 0;
+        }
 
         // first upper, second lower
         if ((scase == 0x06) && (sl != sh-32))
@@ -49,9 +55,6 @@ int ispalindrome(char *s, int linelen) {
 
         // first lower, second upper
         if ((scase == 0x09) && (sl-32 != sh))
-            return 0;
-        // both lower
-        if ((scase == 0x05) && (sl != sh))
             return 0;
         h--;
         l++;
