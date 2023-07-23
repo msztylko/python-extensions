@@ -84,3 +84,6 @@ real	0m0.275s
 user	0m0.005s
 sys	0m0.003s
 ```
+
+[c_asm_palindrome.c](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_asm_palindrome.c) - C driver  
+[asm_palindrome.asm](https://github.com/msztylko/python-extensions/blob/master/palindrome/asm_palindrome.asm) - Assembly implementation
