@@ -5,6 +5,8 @@
 #define FIRST_UP_SECOND_LOW 0x06
 #define FIRST_LOW_SECOND_UP 0x09
 #define BOTH_LOWER          0x05
+#define L_ALNUM             0x03
+#define H_ALNUM             0x0C
 
 char ispalindrome(char *s, char linelen) {
     char l = 0;
@@ -25,14 +27,14 @@ char ispalindrome(char *s, char linelen) {
         if ('A' <= sh && sh <= 'Z')
             scase |= (1 << 3);
 
-        while (!(scase & 0x03)) {
+        while (!(scase & L_ALNUM)) {
             sl = s[++l];
             if ('a' <= sl && sl <= 'z')
                 scase |= (1 << 0);
             if ('A' <= sl && sl <= 'Z')
                 scase |= (1 << 1);
         }
-        while (!(scase & 0x0C)) {
+        while (!(scase & H_ALNUM)) {
             sh = s[--h];
             if ('a' <= sh && sh <= 'z')
                 scase |= (1 << 2);
