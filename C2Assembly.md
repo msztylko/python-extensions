@@ -1,7 +1,7 @@
 # C2Assembly
 
-For certain C programs the translation to assembly is rather straightforward, for example [Fibonacci sequence](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_fib.c) and its [assembly version](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm). This is not as easy for more complicated programs as [palindrome](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_palindrome.c). 
-And even if it were, it is still useful to consider how given algorithm is going to be realized in the machine code. This can guide it towards more compact/efficient version.
+For certain C programs the translation to assembly is rather straightforward, for example [Fibonacci sequence](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_fib.c) and its [assembly version](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm). This is not as easy for other programs such as [palindrome](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_palindrome.c). 
+And even if it were, it is still useful to consider how given algorithm is going to be realized in the machine code. This can guide us towards more compact/efficient version.
 
 Let's discuss process of translating C to Assembly with Palindrome example.
 
@@ -25,7 +25,7 @@ bool ispalindrome(char s[], int linelen) {
 }
 ```
 
-This code is quite compact, but it's due to the usage of functions from the C library. Our handwritten Assembly will not use these functions so let's start by replacing them. 
+This code is quite compact, but it's due to the usage of functions from the C library. Our handwritten Assembly will not use these functions, so let's start by replacing them. 
 
 ### C Palindrome second version
 
@@ -68,4 +68,54 @@ int ispalindrome(char *s, int linelen) {
 }
 ```
 
-This version is more mechanistic so it will be easier to translate to Assembly. However, it is clear that there is a lot of redundant computations so let's start by simplifying them.
+This version is more mechanistic, so it will be easier to translate to Assembly. However, it is clear that there is a lot of redundant computations, so let's start by simplifying them.
+
+### C Palindrome third version
+
+In the main loop we perform a lot of comparisons like `'A' <= s[l]` and so on. This is to determine whether current character is lower or upper case. First, let's stop accessing string for each comparison and instead store the result for low and high pointers.
+
+```C
+sl = s[l];
+sh = s[h];
+```
+
+Then I thought about checking the case of `sl` and `sh` and storing it in 4 variables like:
+
+```C
+char l_lower;
+char l_upper;
+char h_lower;
+char h_upper;
+
+sl = s[l];
+sh = s[h];
+
+if ('a' <= sl && sl <= 'z')
+    l_lower = 1;
+...
+```
+
+However, I realized that the information that I try to encode here requires only 4 bits and there's good reason to use 4 1-byte long variables to encode it. Instead I decided to use single 1-byte variable `scase` and use its 4 low-order bits. So now we have:
+
+```
+char scase = 0x00;
+
+if ('a' <= sl && sl <= 'z')
+    scase |= (1 << 0);
+```
+
+in this representation:
+
+```
+0b0000 0000
+       ||||__ l_lower
+       |||__ l_upper
+       ||__ h_lower
+       |__ h_upper
+```
+
+full code for this version:
+
+```C
+...
+```
