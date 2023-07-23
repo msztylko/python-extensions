@@ -51,7 +51,7 @@ char ispalindrome(char *s, char linelen) {
         if ((scase == FIRST_LOW_SECOND_UP) && (sl-32 != sh))
             return 0;
 
-        if ((scase ==BOTH_LOWER) && (sl != sh))
+        if ((scase == BOTH_LOWER) && (sl != sh))
             return 0;
 
         h--;
