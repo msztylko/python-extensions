@@ -1,7 +1,7 @@
 # C2Assembly
 
-For certain C programs the translation to assembly is rather straightforward, for example [Fibonacci sequence](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_fib.c) and its [assembly version](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm). This is not as easy for more complicated programs as [palindrome](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_palindrome.c). 
-And even if it were, it is still useful to consider how given algorithm is going to be realized in the machine code. This can guide it towards more compact/efficient version.
+For certain C programs the translation to assembly is rather straightforward, for example [Fibonacci sequence](https://github.com/msztylko/python-extensions/blob/master/fibonacci/c_fib.c) and its [assembly version](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm). This is not as easy for other programs such as [palindrome](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_palindrome.c). 
+And even if it were, it is still useful to consider how given algorithm is going to be realized in the machine code. This can guide us towards more compact/efficient version.
 
 Let's discuss process of translating C to Assembly with Palindrome example.
 
