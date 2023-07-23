@@ -21,7 +21,7 @@ ispalindrome:
                     
 .top_loop:                ; while (l < h) 
     cmp rcx, rsi
-    jl .end
+    jge .end
 
     mov r8, [rdi + rcx]   ; sl = s[l];
     mov r9, [rdi + rsi]   ; sh = s[h];
@@ -43,17 +43,17 @@ ispalindrome:
     or rdx, 2
 .sh_lower:
     ; if ('a' <= sh && sh <= 'z')
-    cmp r8, 'a'
+    cmp r9, 'a'
     jl .sh_upper
-    cmp r8, 'z'
+    cmp r9, 'z'
     jg .sh_upper
     ; scase |= (1 << 2);
     or rdx, 4
 .sh_upper:
     ; if ('A' <= sh && sh <= 'Z')
-    cmp r8, 'A'
+    cmp r9, 'A'
     jl .l_loop
-    cmp r8, 'Z'
+    cmp r9, 'Z'
     jg .l_loop
     ; scase |= (1 << 3);
     or rdx, 8
@@ -87,7 +87,7 @@ ispalindrome:
     ; while (!(scase & H_ALNUM))
     mov rax, rdx
     and rax, H_ALNUM
-    cmp eax, 0
+    cmp rax, 0
     jne .both_upper
     ; sh = s[--h];
     sub rsi, 1
@@ -120,9 +120,9 @@ ispalindrome:
     mov rax, rdx
     cmp rax, FIRST_UP_SECOND_LOW
     jne .first_low_second_up
-    mov rcx, r9
-    sub rcx, 32
-    cmp r8, rcx
+    mov r11, r9
+    sub r11, 32
+    cmp r8, r11
     je .first_low_second_up
     jne .end_not_palindrome
 
@@ -130,9 +130,9 @@ ispalindrome:
     mov rax, rdx
     cmp rax, FIRST_LOW_SECOND_UP
     jne .both_lower
-    mov rcx, r8
-    sub rcx, 32
-    cmp rcx, r9
+    mov r11, r8
+    sub r11, 32
+    cmp r11, r9
     je .both_lower
     jne .end_not_palindrome
 
