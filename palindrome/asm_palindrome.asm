@@ -83,7 +83,7 @@ ispalindrome:
         or rdx, 2
     jmp .l_loop
 
-.h_loop
+.h_loop:
     ; while (!(scase & H_ALNUM))
     mov rax, rdx
     and rax, H_ALNUM
@@ -102,9 +102,9 @@ ispalindrome:
     .h_loop_sh_upper:
         ; if ('A' <= sh && sh <= 'Z') scase |= (1 << 3);
         cmp r9, 'A'
-        jl .h_upper
+        jl .h_loop
         cmp r9, 'Z'
-        jg .h_upper
+        jg .h_loop
         or rdx, 8;
     jmp .h_loop
 
@@ -149,10 +149,10 @@ ispalindrome:
     add rcx, 1
     xor rdx, rdx
 
-.end_not_palindrome
+.end_not_palindrome:
     xor rax, rax
     ret
 
-.end
+.end:
     mov rax, 1
     ret 
