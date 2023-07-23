@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// extern ispalindrome(char *s, int linelen);
+#define BOTH_UPPER          0x0A
+#define FIRST_UP_SECOND_LOW 0x06
+#define FIRST_LOW_SECOND_UP 0x09
+#define BOTH_LOWER          0x05
 
 char ispalindrome(char *s, char linelen) {
     char l = 0;
@@ -36,26 +39,19 @@ char ispalindrome(char *s, char linelen) {
             if ('A' <= sh && sh <= 'Z')
                 scase |= (1 << 3);
         }
-
-        // both upper or lower
-        if ((scase == 0x0A) || (scase == 0x05)) {
-            if (sl == sh) {
-                h--;
-                l++;
-                scase = 0x00;
-                continue;
-            }
-            else
-                return 0;
-        }
-
-        // first upper, second lower
-        if ((scase == 0x06) && (sl != sh-32))
+    
+        if ((scase == BOTH_UPPER) && (sl != sh))
             return 0;
 
-        // first lower, second upper
-        if ((scase == 0x09) && (sl-32 != sh))
+        if ((scase == FIRST_UP_SECOND_LOW) && (sl != sh-32))
             return 0;
+
+        if ((scase == FIRST_LOW_SECOND_UP) && (sl-32 != sh))
+            return 0;
+
+        if ((scase ==BOTH_LOWER) && (sl != sh))
+            return 0;
+
         h--;
         l++;
         scase = 0x00;
