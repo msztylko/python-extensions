@@ -72,3 +72,15 @@ sys	0m0.006s
 
 This is slower than the pure Python version 🤔
 
+## Assembly
+
+[c_like_asm_palindrome.c](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_like_asm_palindrome.c) - C implementation written in Assembly style to allow easier [translation](https://github.com/msztylko/python-extensions/blob/master/C2Assembly.md) to Assembly.
+
+```bash
+./test.sh ./c_like_asm_palindrome                                              
+ok
+
+real	0m0.275s
+user	0m0.005s
+sys	0m0.003s
+```
