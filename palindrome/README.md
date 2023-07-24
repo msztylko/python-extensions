@@ -122,3 +122,24 @@ gcc -O2 c_like_asm_palindrome.c -o c_like_asm_palindrome
 nasm -g -f macho64 --prefix _ asm_palindrome.asm -o asm_palindrome                     
 gcc -g -Wall -arch x86_64  asm_palindrome c_asm_palindrome.c -o c_asm_palindrome  
 ```
+
+Original C:
+```bash
+time ./c_palindrome < benchmark.txt 1>/dev/null                                         
+ok
+./c_palindrome < benchmark.txt > /dev/null  9.31s user 0.90s system 99% cpu 10.228 total
+```
+
+C written like ASM:
+```bash
+time ./c_like_asm_palindrome < benchmark.txt 1>/dev/null                               
+ok
+./c_like_asm_palindrome < benchmark.txt > /dev/null  7.38s user 0.85s system 97% cpu 8.461 total
+```
+
+Assembly:
+```bash
+time ./c_asm_palindrome < benchmark.txt 1>/dev/null                                    
+ok
+./c_asm_palindrome < benchmark.txt > /dev/null  21.41s user 2.47s system 99% cpu 23.876 total
+```
