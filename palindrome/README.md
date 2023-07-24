@@ -78,7 +78,6 @@ This is slower than the pure Python version 🤔
 
 ```bash
 ./test.sh ./c_like_asm_palindrome                                              
-ok
 
 real	0m0.275s
 user	0m0.005s
@@ -87,3 +86,18 @@ sys	0m0.003s
 
 [c_asm_palindrome.c](https://github.com/msztylko/python-extensions/blob/master/palindrome/c_asm_palindrome.c) - C driver  
 [asm_palindrome.asm](https://github.com/msztylko/python-extensions/blob/master/palindrome/asm_palindrome.asm) - Assembly implementation
+
+Built with:
+
+```bash
+nasm -g -f macho64 --prefix _ asm_palindrome.asm -o asm_palindrome
+cc -g -Wall -arch x86_64  asm_palindrome c_asm_palindrome.c -o c_asm_palindrome
+```
+
+```bash
+./test.sh ./c_asm_palindrome                                                       
+
+real	0m0.016s
+user	0m0.007s
+sys	0m0.004s
+```
