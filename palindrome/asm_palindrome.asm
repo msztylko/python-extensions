@@ -109,6 +109,7 @@ ispalindrome:
     jmp .h_loop
 
 .both_upper:
+    ; ((scase == BOTH_UPPER) && (sl != sh))
     mov eax, edx
     cmp rax, BOTH_UPPER
     jne .first_up_second_low
@@ -117,6 +118,7 @@ ispalindrome:
     jne .end_not_palindrome
     
 .first_up_second_low:
+    ; ((scase == FIRST_UP_SECOND_LOW) && (sl != sh-32))
     mov eax, edx
     cmp rax, FIRST_UP_SECOND_LOW
     jne .first_low_second_up
@@ -127,6 +129,7 @@ ispalindrome:
     jne .end_not_palindrome
 
 .first_low_second_up:
+    ; ((scase == FIRST_LOW_SECOND_UP) && (sl-32 != sh))
     mov eax, edx
     cmp rax, FIRST_LOW_SECOND_UP
     jne .both_lower
@@ -137,6 +140,7 @@ ispalindrome:
     jne .end_not_palindrome
 
 .both_lower:
+    ; ((scase == BOTH_LOWER) && (sl != sh))
     mov eax, edx
     cmp rax, BOTH_LOWER
     jne .end_top_loop
@@ -145,9 +149,9 @@ ispalindrome:
     jne .end_not_palindrome
 
 .end_top_loop:
-    sub rsi, 1
-    add rcx, 1
-    xor rdx, rdx
+    sub rsi, 1      ; h--;
+    add rcx, 1      ; l++;
+    xor rdx, rdx    ; scase = 0x00;
     jmp .top_loop
 
 .end_not_palindrome:
