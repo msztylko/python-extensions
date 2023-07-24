@@ -101,3 +101,24 @@ real	0m0.016s
 user	0m0.007s
 sys	0m0.004s
 ```
+
+## C vs C-ASM vs ASM
+
+Performance of these programs is so close that we need a better benchmark to better understand what's going on. Quick idea:
+
+```bash
+sed 'p;p;p;p;p' cases.txt | sed 'p;p;p;p;p' | sed 'p;p;p;p;p' | sed 'p;p;p;p;p' | sed 'p;p;p;p;p' > benchmark.txt
+ls -lah benchmark.txt                                                                  
+-rw-r--r--  1 marcin  staff   3.8G Jul 24 08:52 benchmark.txt
+```
+
+Almost 4GB should be enough for this test.
+
+Build:
+
+```bash
+gcc -O2 c_palindrome.c -o c_palindrome                                                  
+gcc -O2 c_like_asm_palindrome.c -o c_like_asm_palindrome                                
+nasm -g -f macho64 --prefix _ asm_palindrome.asm -o asm_palindrome                     
+gcc -g -Wall -arch x86_64  asm_palindrome c_asm_palindrome.c -o c_asm_palindrome  
+```
