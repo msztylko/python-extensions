@@ -15,16 +15,16 @@ ispalindrome:
     ; rdx: scase
     ; r8:  sl
     ; r9:  sh
-    xor rcx, rcx          ; char l = 0;
+    xor ecx, ecx          ; char l = 0;
     sub rsi, 1            ; int h = linelen - 1;
-    xor rdx, rdx          ; char scase = 0x00;
+    xor edx, edx          ; char scase = 0x00;
                     
 .top_loop:                ; while (l < h) 
-    cmp rcx, rsi
+    cmp ecx, esi
     jge .end
 
-    mov r8, [rdi + rcx]   ; sl = s[l];
-    mov r9, [rdi + rsi]   ; sh = s[h];
+    movzx r8, byte [rdi + rcx]   ; sl = s[l];
+    movzx r9, byte [rdi + rsi]   ; sh = s[h];
 .sl_lower:
     ; if ('a' <= sl && sl <= 'z')
     cmp r8, 'a'
@@ -32,7 +32,7 @@ ispalindrome:
     cmp r8, 'z'
     jg .sl_upper
     ; scase |= (1 << 0);
-    or rdx, 1
+    or edx, 1
 .sl_upper:
     ; if ('A' <= sl && sl <= 'Z')
     cmp r8, 'A'
@@ -40,7 +40,7 @@ ispalindrome:
     cmp r8, 'Z'
     jg .sh_lower
     ; scase |= (1 << 1);
-    or rdx, 2
+    or edx, 2
 .sh_lower:
     ; if ('a' <= sh && sh <= 'z')
     cmp r9, 'a'
@@ -48,7 +48,7 @@ ispalindrome:
     cmp r9, 'z'
     jg .sh_upper
     ; scase |= (1 << 2);
-    or rdx, 4
+    or edx, 4
 .sh_upper:
     ; if ('A' <= sh && sh <= 'Z')
     cmp r9, 'A'
@@ -56,88 +56,88 @@ ispalindrome:
     cmp r9, 'Z'
     jg .l_loop
     ; scase |= (1 << 3);
-    or rdx, 8
+    or edx, 8
     
 .l_loop:
     ; while (!(scase & L_ALNUM))
-    mov rax, rdx
+    mov eax, edx
     and rax, L_ALNUM
     cmp eax, 0
     jne .h_loop
     ; sl = s[++l]
-    add rcx, 1
-    mov r8, [rdi + rcx]
+    add ecx, 1
+    movzx r8, byte [rdi + rcx]
     .l_loop_sl_lower:
         ;if ('a' <= sl && sl <= 'z') scase |= (1 << 0)
         cmp r8, 'a'
         jl .l_loop_sl_upper
         cmp r8, 'z'
         jg .l_loop_sl_upper
-        or rdx, 1
+        or edx, 1
     .l_loop_sl_upper:
         ; if ('A' <= sl && sl <= 'Z') scase |= (1 << 1)
         cmp r8, 'A'
         jl .l_loop
         cmp r8, 'Z'
         jg .l_loop
-        or rdx, 2
+        or edx, 2
     jmp .l_loop
 
 .h_loop:
     ; while (!(scase & H_ALNUM))
-    mov rax, rdx
+    mov eax, edx
     and rax, H_ALNUM
-    cmp rax, 0
+    cmp eax, 0
     jne .both_upper
     ; sh = s[--h];
     sub rsi, 1
-    mov r9, [rdi + rsi]
+    movzx r9, byte [rdi + rsi]
     .h_loop_sh_lower:
         ; if ('a' <= sh && sh <= 'z') scase |= (1 << 2);
         cmp r9, 'a'
         jl .h_loop_sh_upper
         cmp r9, 'z'
         jg .h_loop_sh_upper
-        or rdx, 4
+        or edx, 4
     .h_loop_sh_upper:
         ; if ('A' <= sh && sh <= 'Z') scase |= (1 << 3);
         cmp r9, 'A'
         jl .h_loop
         cmp r9, 'Z'
         jg .h_loop
-        or rdx, 8;
+        or edx, 8;
     jmp .h_loop
 
 .both_upper:
-    mov rax, rdx
+    mov eax, edx
     cmp rax, BOTH_UPPER
     jne .first_up_second_low
     cmp r8, r9
-    je .first_up_second_low
+    je .end_top_loop
     jne .end_not_palindrome
     
 .first_up_second_low:
-    mov rax, rdx
+    mov eax, edx
     cmp rax, FIRST_UP_SECOND_LOW
     jne .first_low_second_up
     mov r11, r9
     sub r11, 32
     cmp r8, r11
-    je .first_low_second_up
+    je .end_top_loop
     jne .end_not_palindrome
 
 .first_low_second_up:
-    mov rax, rdx
+    mov eax, edx
     cmp rax, FIRST_LOW_SECOND_UP
     jne .both_lower
     mov r11, r8
     sub r11, 32
     cmp r11, r9
-    je .both_lower
+    je .end_top_loop
     jne .end_not_palindrome
 
 .both_lower:
-    mov rax, rdx
+    mov eax, edx
     cmp rax, BOTH_LOWER
     jne .end_top_loop
     cmp r8, r9
@@ -148,11 +148,12 @@ ispalindrome:
     sub rsi, 1
     add rcx, 1
     xor rdx, rdx
+    jmp .top_loop
 
 .end_not_palindrome:
-    xor rax, rax
+    xor eax, eax
     ret
 
 .end:
-    mov rax, 1
+    mov eax, 1
     ret 
