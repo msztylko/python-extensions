@@ -59,3 +59,7 @@ if __name__ == '__main__':
     main()
 ```
 To install C extension you can run `pip install -e .` in the directory with C code and `setup.py`
+
+## Writing Assembly extensions for Python
+
+Since I already have assembly version of [fibonacci](https://github.com/msztylko/python-extensions/blob/master/fibonacci/asm_fib.asm) and [palindrome](https://github.com/msztylko/python-extensions/blob/master/palindrome/asm_palindrome.asm) programs there was only one logical next step - writing Python extensions in pure assembly. After a couple of hours spent on that, I realized that the main issue is creating Python module data structures in Assembly and putting everything together. I tried to follow [Writing Python Extensions in Assembly](https://tonybaloney.github.io/posts/extending-python-with-assembly.html) and I was able to make it work on Linux, but not on Mac which I'm currently working on. Leaving it for now, as I'm already satisfied with the state of this project. 
