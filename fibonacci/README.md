@@ -41,6 +41,8 @@ sys	0m0.013s
 [pyc_fib.py](https://github.com/msztylko/python-extensions/blob/master/fibonacci/pyc_fib.py) - Python driver  
 [cfibonaccimodule.c](https://github.com/msztylko/python-extensions/blob/master/fibonacci/cfibonaccimodule.c) - C implementation
 
+Built with `python setup.py build_ext --inplace`
+
 ```bash
 ./test.sh python pyc_fib.py                                                     
 
