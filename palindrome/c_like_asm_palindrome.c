@@ -1,62 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define BOTH_UPPER          0x0A
-#define FIRST_UP_SECOND_LOW 0x06
-#define FIRST_LOW_SECOND_UP 0x09
-#define BOTH_LOWER          0x05
-#define L_ALNUM             0x03
-#define H_ALNUM             0x0C
+#define L_BIT 0x20
 
 char ispalindrome(char *s, char linelen) {
     char l = 0;
     char h = linelen - 1;
 
-    char scase = 0x00;
     char sl, sh;
 
     while (l < h) {
         sl = s[l];
         sh = s[h];
-        if ('a' <= sl && sl <= 'z')
-            scase |= (1 << 0);
-        if ('A' <= sl && sl <= 'Z')
-            scase |= (1 << 1);
-        if ('a' <= sh && sh <= 'z')
-            scase |= (1 << 2);
-        if ('A' <= sh && sh <= 'Z')
-            scase |= (1 << 3);
 
-        while (!(scase & L_ALNUM)) {
+        while (sl < '@')
             sl = s[++l];
-            if ('a' <= sl && sl <= 'z')
-                scase |= (1 << 0);
-            if ('A' <= sl && sl <= 'Z')
-                scase |= (1 << 1);
-        }
-        while (!(scase & H_ALNUM)) {
+        while (sh < '@')
             sh = s[--h];
-            if ('a' <= sh && sh <= 'z')
-                scase |= (1 << 2);
-            if ('A' <= sh && sh <= 'Z')
-                scase |= (1 << 3);
+
+        if ((sl & L_BIT) && (sh & L_BIT)) {
+            if (sl != sh)
+                return 0;
         }
-    
-        if ((scase == BOTH_UPPER) && (sl != sh))
-            return 0;
 
-        if ((scase == FIRST_UP_SECOND_LOW) && (sl != sh-32))
-            return 0;
-
-        if ((scase == FIRST_LOW_SECOND_UP) && (sl-32 != sh))
-            return 0;
-
-        if ((scase == BOTH_LOWER) && (sl != sh))
-            return 0;
-
+        if (!(sl & L_BIT) && !(sh & L_BIT)) {
+            if (sl != sh)
+                return 0;
+        }
+        if ((sl & L_BIT) && !(sh & L_BIT)) {
+            if (sl - 32 != sh)
+                return 0;
+        }
+        if (!(sl & L_BIT) && (sh & L_BIT)) {
+            if (sl != sh - 32)
+                return 0;
+        }
         h--;
         l++;
-        scase = 0x00;
     }
     return 1;
 }
