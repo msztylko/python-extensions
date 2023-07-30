@@ -93,7 +93,7 @@ sys	0m0.004s
 
 ## C vs C-ASM vs ASM
 
-Performance of these programs is so close that we need a better benchmark to better understand what's going on. Quick idea:
+Performance of these programs is so close that we need a better benchmark in order to understand what's going on. Quick idea:
 
 ```bash
 sed 'p;p;p;p;p' cases.txt | sed 'p;p;p;p;p' | sed 'p;p;p;p;p' | sed 'p;p;p;p;p' | sed 'p;p;p;p;p' > benchmark.txt
@@ -132,3 +132,5 @@ time ./c_asm_palindrome < benchmark.txt 1>/dev/null
 ok
 ./c_asm_palindrome < benchmark.txt > /dev/null  21.41s user 2.47s system 99% cpu 23.876 total
 ```
+
+Ok, turns out that my hand-written Assembly is not that fast (surprise!). Interesting to see that C version inspired by Assembly shows clear performance improvements. I ended up with a [different project](https://github.com/msztylko/fast-palindrome) dedicated to exploration of these differences.
